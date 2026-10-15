@@ -321,7 +321,8 @@ button:active {
   cursor: pointer;
   word-break: break-word;
   font-family: "Clear Sans", system-ui, sans-serif;
-  font-size: 1rem;
+  font-size: 1.15rem;
+  font-weight: 700;
   transition: color 0.2s;
 }
 /* --- Tombol "timbul": Save, Add, Add Link, Start, Stop, Reset, Edit, Delete --- */
