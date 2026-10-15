@@ -71,16 +71,26 @@ body {
    Two equal columns on tablet/desktop; collapses to one
    column below 768 px for mobile readability.
    ============================================================ */
+:root {
+  --space: clamp(0.75rem, 3vw, 1.5rem);   /* satu jarak untuk semuanya */
+}
+
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  padding: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space);
+  padding: var(--space);
   max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
 }
-
+.dashboard-grid {
+  padding-top: calc(var(--space) + 3rem);
+}
+#greeting-widget,
+#links-widget {
+  grid-column: 1 / -1;   /* membentang penuh */
+}
 /* ============================================================
    Responsive — Single-Column below 768 px (Requirement 5.2)
    ============================================================ */
@@ -148,7 +158,7 @@ button:active {
 #links-widget {
   background: var(--color-surface);
   border-radius: 0.75rem;
-  padding: 1.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   transition: background 0.2s, box-shadow 0.2s;
 }
