@@ -20,6 +20,7 @@
         </div>
       </section>
       <section id="timer-widget">
+        <h2 class="widget-title">Focus Timer</h2>
         <p id="timer-mode">Session</p>
         <p id="timer-display">25:00</p>
         <div class="btn-group">
@@ -30,17 +31,27 @@
         <p id="timer-status" aria-live="polite"></p>
       </section>
       <section id="todo-widget">
-        <input id="task-input" type="text" maxlength="200" placeholder="New task…">
-        <button id="task-add">Add</button>
-        <p id="task-warning" class="warning" hidden></p>
+        <h2 class="widget-title">Tasks</h2>
+        <div class="input-row">
+          <input id="task-input" type="text" maxlength="200" placeholder="New task…" aria-label="New task">
+          <button id="task-add">Add</button>
+        </div>
+        <p id="task-warning" class="warning"></p>
         <ul id="task-list"></ul>
       </section>
       <section id="links-widget">
-        <input id="link-name-input" type="text" placeholder="Label">
-        <p id="link-name-warning" class="warning" hidden></p>
-        <input id="link-url-input" type="url" placeholder="https://…">
-        <p id="link-url-warning" class="warning" hidden></p>
-        <button id="link-add">Add</button>
+        <h2 class="widget-title">Quick Links</h2>
+        <div class="link-form">
+          <div class="link-field">
+            <input id="link-name-input" type="text" placeholder="Link name" aria-label="Link name">
+            <p id="link-name-warning" class="warning" hidden>Link name is required.</p>
+          </div>
+          <div class="link-field">
+            <input id="link-url-input" type="url" placeholder="https://example.com" aria-label="Link URL">
+            <p id="link-url-warning" class="warning" hidden>URL is required.</p>
+          </div>
+          <button id="link-add">Add Link</button>
+        </div>
         <ul id="links-list"></ul>
       </section>
     </div>

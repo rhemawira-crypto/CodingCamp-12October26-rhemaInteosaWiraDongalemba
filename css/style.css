@@ -1,15 +1,7 @@
 /* To-Do Life Dashboard styles */
 
-/* ============================================================
-   CSS Custom Properties — Light Theme (default)
-   All color pairs meet WCAG AA contrast:
-     --color-text (#1a1a1a) on --color-bg (#f5f5f5)      → ~16.5:1 ✓
-     --color-text (#1a1a1a) on --color-surface (#ffffff)  → ~19.6:1 ✓
-     --color-text-muted (#6b6b6b) on #ffffff              → ~5.74:1 ✓
-     --color-accent (#2563eb) on #ffffff                  → ~5.90:1 ✓
-     --color-warning (#dc2626) on #ffffff                 → ~4.97:1 ✓
-   ============================================================ */
-   @font-face {
+   
+@font-face {
   font-family: "League Spartan";
   src: url("https://github.com/rhemawira-crypto/CodingCamp-12October26-rhemaInteosaWiraDongalemba/blob/main/fonts/LeagueSpartan-Bold.ttf") format("truetype");
   font-weight: 700;
@@ -51,20 +43,49 @@
   font-style: normal;
   font-display: swap;
 }
-:root {
---page-bg:          linear-gradient(45deg, #6c70d0, #6d59af);
-  --color-bg:         #6c70d0;   /* fallback */
-  --color-surface:    #ffffff;
-  --color-text:       #1a1a1a;
-  --color-text-muted: #6b6b6b;
-  --color-time:       #8a8ad6;   /* jam & timer */
-  --color-accent:     #5c5dd3;
-  --color-button:     #5c5dd3;
-  --color-button-text:#ffffff;
-  --color-border:     #d1d5db;
-  --color-warning:    #dc2626;
-}
+/* ============================================================
+   CSS Custom Properties — Light Theme (default)
+   All color pairs meet WCAG AA contrast:
+     --color-text (#1a1a1a) on --color-bg (#f5f5f5)      → ~16.5:1 ✓
+     --color-text (#1a1a1a) on --color-surface (#ffffff)  → ~19.6:1 ✓
+     --color-text-muted (#6b6b6b) on #ffffff              → ~5.74:1 ✓
+     --color-accent (#2563eb) on #ffffff                  → ~5.90:1 ✓
+     --color-warning (#dc2626) on #ffffff                 → ~4.97:1 ✓
+   ============================================================ */
 
+:root {
+  --page-bg:           linear-gradient(45deg, #6c70d0, #6d59af);
+  --color-bg:          #6c70d0;
+  --color-surface:     #ffffff;
+  --color-text:        #1a1a1a;
+  --color-text-muted:  #6b6b6b;
+  --color-time:        #8a8ad6;
+  --color-accent:      #5c5dd3;
+  --color-button:      #5c5dd3;
+  --color-button-text: #ffffff;
+  --color-border:      #d1d5db;
+  --color-warning:     #dc2626;
+
+  /* input */
+  --color-input-bg:          #ffffff;
+  --color-input-text:        #1a1a1a;
+  --color-input-border:      #d1d5db;
+  --color-input-placeholder: #6b6b6b;
+  --color-input-focus:       #5c5dd3;
+
+  /* tombol sekunder & bahaya */
+  --color-btn-secondary:      #969699;
+  --color-btn-secondary-text: #1a1a1a;
+  --color-danger:             #f42e2e;
+  --color-danger-hover:       #ff0000;
+
+  /* tombol quick link */
+  --color-link-btn:      #a864c9;
+  --color-link-btn-text: #ffffff;
+  --color-link-del:      #c9137a;
+
+  --control-h: 3.2rem;   /* tinggi seragam input & tombol utama */
+}
 /* ============================================================
    Dark Theme Overrides
    All color pairs meet WCAG AA contrast:
@@ -75,17 +96,32 @@
      --color-warning (#f87171) on #111827                 → ~5.85:1 ✓
    ============================================================ */
 html[data-theme="dark"] {
-  --page-bg:          linear-gradient(45deg, #580181, #1a0026);
-  --color-bg:         #580181;   /* fallback */
-  --color-surface:    #624f6b;
-  --color-text:       #f9fafb;
-  --color-text-muted: #d6cce0;
-  --color-time:       #eae3ff;   /* jam & timer */
-  --color-accent:     #d8c8ff;
-  --color-button:     #7c3aed;
-  --color-button-text:#ffffff;
-  --color-border:     #8a7596;
-  --color-warning:    #ffc2c2;
+  --page-bg:           linear-gradient(45deg, #580181, #1a0026);
+  --color-bg:          #580181;
+  --color-surface:     #624f6b;
+  --color-text:        #f9fafb;
+  --color-text-muted:  #d6cce0;
+  --color-time:        #eae3ff;
+  --color-accent:      #d8c8ff;
+  --color-button:      #f48dc8;
+  --color-button-text: #2a0a3d;
+  --color-border:      #8a7596;
+  --color-warning:     #ffc2c2;
+
+  --color-input-bg:          #e5d5eb;
+  --color-input-text:        #2a1a33;
+  --color-input-border:      #f48dc8;
+  --color-input-placeholder: #6b5a73;
+  --color-input-focus:       #ffffff;
+
+  --color-btn-secondary:      #e5d5eb;
+  --color-btn-secondary-text: #2a1a33;
+  --color-danger:             #f42e2e;
+  --color-danger-hover:       #ff0000;
+
+  --color-link-btn:      #d9a6f2;
+  --color-link-btn-text: #2a0a3d;
+  --color-link-del:      #c9137a;
 }
 
 /* ============================================================
@@ -205,18 +241,59 @@ button:active {
   transition: background 0.2s, box-shadow 0.2s;
 }
 
-/* --- To-Do list items --- */
+/* --- Judul widget --- */
+.widget-title {
+  margin: 0 0 1rem;
+  font-family: "Clear Sans", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+  line-height: 1.2;
+  text-align: left;
+  color: var(--color-text);
+}
+
+.input-row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+/* --- To-Do widget ---
+   RINGKASAN: tinggi kartu dikunci (height), kartu Timer di sebelahnya
+   otomatis mengikuti. #task-list memakai flex:1 + overflow-y:auto,
+   jadi saat task bertambah, hanya daftar task yang bisa di-scroll.
+   Ukuran kartu tidak berubah, jumlah task tidak dibatasi
+   (batas praktis hanya kuota LocalStorage ~5 MB). */
+#todo-widget {
+  display: flex;
+  flex-direction: column;
+  height: clamp(22rem, 55vh, 30rem);
+}
+
+#task-warning {
+  margin: 0.5rem 0 0;
+}
+
 #task-list {
   list-style: none;
-  padding: 0;
-  margin: 0.75rem 0 0;
+  margin: 1rem 0 0;
+  padding: 0 0.4rem 0 0;
+  flex: 1;
+  min-height: 0;                 /* wajib agar overflow bekerja di flex */
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) transparent;
+}
+
+#task-list > li {
+  flex-shrink: 0;
 }
 
 .task-item {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.5rem;
@@ -239,128 +316,288 @@ button:active {
 
 .task-item label {
   flex: 1;
+  min-width: 0;
   color: var(--color-text);
   cursor: pointer;
   word-break: break-word;
+  font-family: "Clear Sans", system-ui, sans-serif;
+  font-size: 1rem;
   transition: color 0.2s;
 }
+/* --- Tombol "timbul": Save, Add, Add Link, Start, Stop, Reset, Edit, Delete --- */
+#name-save,
+#task-add,
+#link-add,
+#timer-start,
+#timer-stop,
+#timer-reset,
+.task-edit-btn,
+.task-delete-btn {
+  flex-shrink: 0;
+  padding: 0.6rem 1.6rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: var(--btn-bg, var(--color-button));
+  color: var(--btn-fg, var(--color-button-text));
+  font-family: "Clear Sans", system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: filter 0.15s, transform 0.15s, box-shadow 0.15s,
+              background 0.15s, color 0.15s;
+}
 
+#name-save:hover,   #name-save:focus-visible,
+#task-add:hover,    #task-add:focus-visible,
+#link-add:hover,    #link-add:focus-visible,
+#timer-start:hover, #timer-start:focus-visible,
+#timer-stop:hover,  #timer-stop:focus-visible,
+#timer-reset:hover, #timer-reset:focus-visible,
+.task-edit-btn:hover,   .task-edit-btn:focus-visible,
+.task-delete-btn:hover, .task-delete-btn:focus-visible {
+  background: var(--btn-bg-hover, var(--btn-bg, var(--color-button)));
+  color: var(--btn-fg-hover, var(--btn-fg, var(--color-button-text)));
+  filter: var(--btn-hover-filter, brightness(1.2));
+  transform: scale(0.97);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+#name-save:active,
+#task-add:active,
+#link-add:active,
+#timer-start:active,
+#timer-stop:active,
+#timer-reset:active,
+.task-edit-btn:active,
+.task-delete-btn:active {
+  transform: scale(0.94);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Tombol sejajar input: tinggi sama dengan input */
+#name-save,
+#task-add,
+#link-add {
+  height: var(--control-h);
+  padding: 0 1.6rem;
+}
+
+/* Tombol timer: sedikit lebih besar, Stop & Reset abu-abu */
+#timer-start,
+#timer-stop,
+#timer-reset {
+  min-width: 6.5rem;
+  height: 3.4rem;
+  padding: 0 1.8rem;
+  font-size: 1.15rem;
+}
+
+#timer-stop,
+#timer-reset {
+  --btn-bg: var(--color-btn-secondary);
+  --btn-fg: var(--color-btn-secondary-text);
+}
+
+/* Edit & Delete di daftar task */
+.task-edit-btn,
+.task-delete-btn {
+  padding: 0.45rem 0.95rem;
+  border-radius: 0.6rem;
+  font-size: 0.85rem;
+  --btn-hover-filter: none;
+}
+
+.task-edit-btn {
+  --btn-bg: var(--color-btn-secondary);
+  --btn-fg: var(--color-btn-secondary-text);
+  --btn-bg-hover: var(--color-button);      /* hover = warna tombol Save */
+  --btn-fg-hover: var(--color-button-text);
+}
+
+.task-delete-btn {
+  --btn-bg: var(--color-danger);
+  --btn-fg: #ffffff;
+  --btn-bg-hover: var(--color-danger-hover);
+  --btn-fg-hover: #ffffff;
+}
 /* Completed task label */
 .task-done {
   text-decoration: line-through;
   opacity: 0.55;
 }
 
-.task-edit-btn,
-.task-delete-btn {
-  flex-shrink: 0;
-  padding: 0.25rem 0.55rem;
-  font-size: 0.78rem;
-  border: 1px solid var(--color-text);
-  border-radius: 0.3rem;
-  background: transparent;
-  color: var(--color-text);
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-}
-
-.task-edit-btn:hover,
-.task-edit-btn:focus-visible {
-  background: var(--color-accent);
-  color: #fff;
-  border-color: var(--color-accent);
-  outline: none;
-}
-
-.task-delete-btn:hover,
-.task-delete-btn:focus-visible {
-  background: var(--color-warning);
-  color: #fff;
-  border-color: var(--color-warning);
-  outline: none;
-}
 
 /* Inline task warning (duplicate/etc.) */
 .task-warning {
   display: block;
+  flex-basis: 100%;
   font-size: 0.78rem;
   color: var(--color-warning);
   margin-top: 0.2rem;
-  margin-left: 1.6rem;
+  margin-left: 0;
 }
+.task-warning:empty {
+  display: none;
+}
+
 
 /* --- Timer --- */
 #timer-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-#timer-display {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 3.5rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--color-time);
+#timer-widget .widget-title {
   text-align: center;
-  margin: 0.5rem 0;
+  margin-bottom: 0.3rem;
+}
+
+#timer-mode {
+  margin: 0;
+  font-family: "Clear Sans", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+#timer-display {
+  margin: 0.5rem 0 1rem;
+  font-family: "League Spartan", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(3.5rem, 9vw, 5.5rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-time);
 }
 
 .btn-group {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0.5rem 0;
+  gap: 0.75rem;
+  margin: 0.25rem 0;
 }
 
-/* --- Quick links list --- */
+#timer-status {
+  min-height: 1.4rem;
+  margin: 0.75rem 0 0;
+  font-family: "Clear Sans", system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+
+/* --- Quick links --- */
+.link-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;   /* 2 input sama panjang + tombol */
+  gap: 0.6rem;
+  align-items: start;
+}
+
+.link-field {
+  min-width: 0;
+}
+
+.link-field .warning {
+  margin-top: 0.4rem;
+}
+
 #links-list {
   list-style: none;
+  margin: 1.25rem 0 0;
   padding: 0;
-  margin: 0.75rem 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));   /* 4 tombol per baris */
+  gap: 0.9rem;
 }
 
 .link-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  position: relative;
 }
 
 .link-item a {
-  flex: 1;
-  color: var(--color-accent);
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 3.4rem;
+  line-height: 3.4rem;
+  padding: 0 2.2rem;               /* ruang kiri-kanan untuk tombol x */
+  border-radius: 0.75rem;
+  background: var(--color-link-btn);
+  color: var(--color-link-btn-text);
+  font-family: "Clear Sans", system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-align: center;
   text-decoration: none;
-  word-break: break-all;
-  transition: opacity 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: filter 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
 .link-item a:hover,
 .link-item a:focus-visible {
-  opacity: 0.75;
-  text-decoration: underline;
+  filter: brightness(1.15);
+  transform: scale(0.97);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
   outline: none;
+  text-decoration: none;
+  opacity: 1;
+}
+
+.link-item a:active {
+  transform: scale(0.94);
 }
 
 .link-delete-btn {
-  flex-shrink: 0;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.78rem;
-  border: 1px solid var(--color-text);
-  border-radius: 0.3rem;
-  background: transparent;
-  color: var(--color-text);
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-link-del);
+  color: #ffffff;
+  font-family: "Clear Sans", system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition: filter 0.15s, transform 0.15s;
 }
 
 .link-delete-btn:hover,
 .link-delete-btn:focus-visible {
-  background: var(--color-warning);
-  color: #fff;
-  border-color: var(--color-warning);
+  filter: brightness(1.2);
+  transform: scale(1.1);
   outline: none;
+}
+
+@media (max-width: 899px) {
+  #links-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 599px) {
+  #links-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .link-form  { grid-template-columns: 1fr; }
+  #link-add   { width: 100%; }
 }
 
 /* --- Shared warning paragraph --- */
@@ -369,54 +606,61 @@ button:active {
   font-size: 0.8rem;
   margin: 0.2rem 0 0;
 }
-
+/* Peringatan kosong tidak memakan ruang */
+.warning:empty {
+  display: none;
+}
 /* --- Input error highlight --- */
 .input-error {
   border: 2px solid var(--color-warning) !important;
   outline: none;
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
 }
-/* --- Tombol utama (Save, Add, Start, Stop, Reset) --- */
-#name-save,
-#task-add,
-#timer-start,
-#timer-stop,
-#timer-reset,
-#link-add {
-  padding: 0.5rem 1.1rem;
-  border: none;
-  border-radius: 0.5rem;
-  background: var(--color-button);
-  color: var(--color-button-text);
-  font-family: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: filter 0.15s, transform 0.1s;
+/* --- Input (nama, task, link name, link url): satu gaya --- */
+#name-input,
+#task-input,
+#link-name-input,
+#link-url-input {
+  box-sizing: border-box;
+  height: var(--control-h);
+  padding: 0 1.1rem;
+  border: 2px solid var(--color-input-border);
+  border-radius: 0.75rem;
+  background: var(--color-input-bg);
+  color: var(--color-input-text);
+  font-family: "Clear Sans", system-ui, sans-serif;
+  font-size: 1.05rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-#name-save:hover,
-#task-add:hover,
-#timer-start:hover,
-#timer-stop:hover,
-#timer-reset:hover,
-#link-add:hover,
-#name-save:focus-visible,
-#task-add:focus-visible,
-#timer-start:focus-visible,
-#timer-stop:focus-visible,
-#timer-reset:focus-visible,
-#link-add:focus-visible {
-  filter: brightness(1.12);
+#name-input,
+#task-input {
+  flex: 1;
+  min-width: 0;
 }
 
-#name-save:active,
-#task-add:active,
-#timer-start:active,
-#timer-stop:active,
-#timer-reset:active,
-#link-add:active {
-  transform: scale(0.97);
+#link-name-input,
+#link-url-input {
+  width: 100%;
+}
+
+#name-input::placeholder,
+#task-input::placeholder,
+#link-name-input::placeholder,
+#link-url-input::placeholder {
+  font-family: "Clear Sans", system-ui, sans-serif;
+  font-style: italic;
+  color: var(--color-input-placeholder);
+  opacity: 1;
+}
+
+#name-input:focus,
+#task-input:focus,
+#link-name-input:focus,
+#link-url-input:focus {
+  outline: none;
+  border-color: var(--color-input-focus);
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.25);
 }
 
 /* ============================================================
@@ -466,52 +710,4 @@ button:active {
   gap: 0.6rem;
   width: min(100%, 32rem);
   margin: 1.25rem auto 0;
-}
-
-#name-input {
-  flex: 1;
-  min-width: 0;
-  padding: 0.85rem 1.1rem;
-  border: 2px solid var(--color-border);
-  border-radius: 0.75rem;
-  background: var(--color-surface);
-  color: var(--color-text);
-  font-family: "Clear Sans", system-ui, sans-serif;
-  font-size: 1.05rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-#name-input::placeholder {
-  font-family: "Clear Sans", system-ui, sans-serif;
-  font-style: italic;
-  color: var(--color-text-muted);
-  opacity: 1;
-}
-
-#name-input:focus {
-  outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.25);
-}
-
-#name-save {
-  padding: 0 1.6rem;
-  border-radius: 0.75rem;
-  font-family: "Clear Sans", system-ui, sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  transition: filter 0.15s, transform 0.15s, box-shadow 0.15s;
-}
-
-#name-save:hover,
-#name-save:focus-visible {
-  filter: brightness(1.2);
-  transform: scale(0.97);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
-}
-
-#name-save:active {
-  transform: scale(0.94);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }

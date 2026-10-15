@@ -772,7 +772,9 @@ const LinksWidget = {
 
     if (hasError) return;
 
-    this._links.push({ id: _genId(), name: name.trim(), url: url.trim() });
+    let cleanUrl = url.trim();
+    if (!/^https?:\/\//i.test(cleanUrl)) cleanUrl = "https://" + cleanUrl;
+    this._links.push({ id: _genId(), name: name.trim(), url: cleanUrl });
     this._save();
     this._render();
 
@@ -821,7 +823,7 @@ const LinksWidget = {
 
       // â”€â”€ Delete button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
       const deleteBtn = document.createElement("button");
-      deleteBtn.textContent = "Delete";
+      deleteBtn.textContent = "\u00D7";
       deleteBtn.className   = "link-delete-btn";
       deleteBtn.setAttribute("aria-label", `Delete link: ${link.name}`);
       deleteBtn.addEventListener("click", () => this._deleteLink(link.id));
