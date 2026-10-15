@@ -154,6 +154,23 @@ const GreetingWidget = {
     Storage.set("tld_name", trimmed);
   },
 
+    _fitDate() {
+    const clockEl = document.getElementById("clock");
+    const dateEl  = document.getElementById("date");
+    if (!clockEl || !dateEl) return;
+
+    dateEl.style.letterSpacing = "0px";
+    dateEl.style.transform = "none";
+
+    const clockW = clockEl.getBoundingClientRect().width;
+    const dateW  = dateEl.getBoundingClientRect().width;
+    const gaps   = dateEl.textContent.length - 1;
+    if (!clockW || !dateW || gaps < 1) return;
+
+    const spacing = Math.max(0, (clockW - dateW) / gaps);
+    dateEl.style.letterSpacing = spacing + "px";
+    dateEl.style.transform = `translateX(${spacing / 2}px)`;
+  },
   /**
    * Reads the current time, updates #clock, #date, and #greeting.
    * Called once immediately and then every second by setInterval.
@@ -188,7 +205,10 @@ const GreetingWidget = {
     const greetingEl = document.getElementById("greeting");
 
     if (clockEl)    clockEl.textContent    = timeStr;
-    if (dateEl)     dateEl.textContent     = dateStr;
+    if (dateEl && dateEl.textContent !== dateStr) {
+        dateEl.textContent = dateStr;
+        this._fitDate();
+        }
     if (greetingEl) greetingEl.textContent = greetStr;
   },
 
@@ -219,7 +239,10 @@ const GreetingWidget = {
         this._tick();
       });
     }
-
+    window.addEventListener("resize", () => this._fitDate());
+    if (document.fonts) {
+      document.fonts.ready.then(() => this._fitDate());
+    }
     // Start live clock
     setInterval(() => this._tick(), 1000);
 

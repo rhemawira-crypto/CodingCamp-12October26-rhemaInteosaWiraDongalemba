@@ -14,15 +14,19 @@
         <p id="clock"></p>
         <p id="date"></p>
         <p id="greeting"></p>
-        <input id="name-input" type="text" placeholder="Your name">
-        <button id="name-save">Save</button>
+        <div class="name-form">
+          <input id="name-input" type="text" placeholder="Type your name here" aria-label="Your name">
+          <button id="name-save">Save</button>
+        </div>
       </section>
       <section id="timer-widget">
         <p id="timer-mode">Session</p>
         <p id="timer-display">25:00</p>
-        <button id="timer-start">Start</button>
-        <button id="timer-stop">Stop</button>
-        <button id="timer-reset">Reset</button>
+        <div class="btn-group">
+          <button id="timer-start">Start</button>
+          <button id="timer-stop">Stop</button>
+          <button id="timer-reset">Reset</button>
+        </div>
         <p id="timer-status" aria-live="polite"></p>
       </section>
       <section id="todo-widget">
